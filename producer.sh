@@ -2,7 +2,7 @@
  
 name=demo
 echo Using queue $name
-qurl=`aws sqs get-queue-url --queue-name $name --query QueueUrl --output text`
+qurl=`aws sqs get-queue-url --queue-name $name --region eu-west-1 --query QueueUrl --output text`
 echo Qeueu url: $qurl
 for i in `seq 1 1000`; do
   aws sqs send-message \

@@ -7,7 +7,7 @@ echo Queue url: $qurl
 while true; do
     msg=$(aws sqs receive-message \
 	     --queue-url $qurl \
-	     --max-number-of-message 1 \
+	     --max-number-of-messages 1 \
 	     --region=eu-west-1)
     handler=$(echo "$msg" | jq -r .Messages[0].ReceiptHandle)
     body=$(echo "$msg" | jq -r .Messages[0].Body)
